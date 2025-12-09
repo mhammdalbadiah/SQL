@@ -1,0 +1,77 @@
+ -- 1 
+ DELETE FROM STUDENT
+ WHERE GENDER = 'M';
+ -- 2
+ UPDATE STUDENT 
+ SET EMAIL = 'sara.new@example.com'
+ WHERE STUDENT_ID = 3; 
+ -- 3 
+ SELECT FIRST_NAME , LAST_NAME
+ FROM STUDENT
+ ORDER BY LAST_NAME ASC ;
+ -- 4 
+ SELECT * FROM  STUDENT
+ WHERE GENDER = 'F' AND DEPT_ID = 10 ;
+ -- 5 
+ SELECT * FROM STUDENT
+ WHERE STUDENT_ID BETWEEN 1 AND 3 ;
+ -- 6 
+ SELECT FIRST_NAME 
+ FROM STUDENT
+ WHERE FIRST_NAME IN ('Aisha','Omar','Reem');
+ -- 7 
+ SELECT COUNT(STUDENT_ID) 
+ FROM STUDENT
+ WHERE GENDER = 'F';
+ -- 8
+ SELECT DOB
+ FROM STUDENT
+ ORDER BY DOB DESC;
+ -- 9 
+ SELECT * FROM STUDENT
+ WHERE FIRST_NAME LIKE 'A%' OR FIRST_NAME LIKE '%m';
+ -- 10 
+ SELECT * FROM STUDENT
+ WHERE (GENDER = 'F' AND DEPT = 10 )OR (GENDER = 'M' AND CITY = 'Riyadh');
+ -- Using the data below, determine the best data type for each column and then write a CREATE TABLE
+ -- statement for a table named Departments.
+ -- A :
+ -- DEPT_ID : INT PRIMARY KEY , DEPT_NAME = VARCHAR(100), BUilding = CHAR , OFFICE_PHONE = DATE 
+ CREATE TABLE DEPARTMENT(
+ 
+   DEPT_ID INT PRIMARY KEY , 
+   DEPT_NAME VARCHAR(100),
+   BUILDING CHAR(1) , 
+   OFFICE_PHONE VARCHAR(15)
+   
+ );
+ 
+ 
+ 
+ -- 2. Using the sample data below,
+ -- determine the appropriate data type for each column and then write an
+ -- SQL CREATE TABLE statement for a table named Students.
+ 
+ 
+ -- STUDENT_ID INT PRIMARY KEY , DEPT_ID INT FORIGEN KEY , FIRST_NAME = VARCHAR(50) , LAST_NAME VARCHAR(50) 
+ -- , DATE_OF_BIRTH DATE = DATE , EMAIL = VARCHAR(255) , GENDER = CHAR  
+ 
+ CREATE TABLE STUDENT (
+ 
+  STUDENT_ID INT PRIMARY KEY ,
+  DEPT_ID INT, 
+  FIRST_NAME VARCHAR(50),
+  LAST_NAME VARCHAR(50),
+  DATE_OF_BIRTH DATE , 
+  EMAIL VARCHAR(255),
+  GENDER CHAR(1) ,
+  FOREIGN KEY (DEPT_ID) REFERENCES DEPARTMENT(DEPT_ID) 
+ 
+ );
+ 
+ 
+ 
+ 
+ 
+ 
+ 
